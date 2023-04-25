@@ -40,7 +40,7 @@ public class ImageService {
 
        Image image = imageRepository2.findById(id).get();
 
-       String imageDimension = image.getDimension();
+       String imageDimension = image.getDimensions();
 
        String [] imgarray = imageDimension.split("X");
 
