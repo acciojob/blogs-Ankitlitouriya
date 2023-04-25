@@ -1,10 +1,12 @@
 package com.driver.models;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "Image")
 public class Image {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
 
     public String description;
@@ -15,6 +17,10 @@ public class Image {
     @JoinColumn
     Blog blog ;
 
+    public Image()
+    {
+
+    }
     public Image(Blog blog, String description, String dimensions) {
     }
 

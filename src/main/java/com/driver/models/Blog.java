@@ -1,5 +1,6 @@
 package com.driver.models;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -8,8 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-
-@Table(name = "blog")
+@Table(name = "Blog")
 public class Blog {
 
 
@@ -20,7 +20,7 @@ public class Blog {
 
     private String content;
 
-    @UpdateTimestamp
+    @CreationTimestamp
     private Date pubDate;
 
     @ManyToOne
@@ -30,7 +30,15 @@ public class Blog {
     @OneToMany(mappedBy ="blog",cascade = CascadeType.ALL)
     List<Image> imageList = new ArrayList<>();
 
+    public Blog()
+    {
+
+    }
+
     public Blog(User user, String title, String content) {
+        this.title =title;
+        this.content =content;
+        this.user =user;
     }
 
     public Blog(int id, String title, String content, Date pubDate, User user, List<Image> imageList) {
